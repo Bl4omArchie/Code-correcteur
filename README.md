@@ -19,7 +19,41 @@ struct Code code = {.dimension=4, .longueur=4, .tableau={a, b, c, d}};
 Dans ma structure Code, j'indique la dimension (nombre de bits dans un mot), la longueur (le nombre de mots) et enfin un tableau avec tous les Vecteurs créés auparavant. 
 
 ## Matrice
-Une Matrice permet de représenter un Code sous une forme différente (forme matricielle). Elle permet de faire des calculs plus aisement dessus. Je travail encore sur cette partie.
+Une matrice se définit par un nombre de colonnes et de lignes. Dans cette structure j'utilise le même système que les listes chaînées, c'est à dire qu'une struct ligne va pointer sur la ligne suivante et ainsi de suite, et de même pour les colonnes. Cela permet de gérer et accéder facilement aux valeurs contenues dans ma matrice. 
+```c
+typedef struct Ligne {
+    int num_ligne;
+    struct Ligne *prev;
+    struct Ligne *next;
+}Ligne;
+
+
+typedef struct Colonne {
+    int num_col;
+    struct Ligne *prev;
+    struct Ligne *next;
+}Colonne;
+
+typedef struct Matrice {
+    int nb_columns;
+    int nb_lignes;
+    struct Ligne *first_ligne;
+    struct Colonne *first_colonne; 
+}Matrice;
+```
+
+Je définis ensuite un élément qui contient une valeur et qui se définit par sa ligne et sa colonne. Pour l'instant le type de valeur n'est pas générique et restera un integer.
+```c
+typedef struct Element {
+    int value;
+
+    struct Element *prev;
+    struct Element *next;
+    struct Ligne *l;
+    struct Colonne *c;
+}Element;
+```
+Ces structures qui constitue une matrice vont me permettre d'encoder des messages sur des codes correcteurs linéaires.
 
 ## Compilation
 

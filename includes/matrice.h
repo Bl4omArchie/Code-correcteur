@@ -15,16 +15,14 @@ typedef struct Element {
 
 
 typedef struct Ligne {
-    int ligne;
-    int colonne;
+    int num_ligne;
     struct Ligne *prev;
     struct Ligne *next;
 }Ligne;
 
 
 typedef struct Colonne {
-    int ligne;
-    int colonne;
+    int num_col;
     struct Ligne *prev;
     struct Ligne *next;
 }Colonne;
@@ -32,8 +30,8 @@ typedef struct Colonne {
 
 //Matrice g
 typedef struct Matrice {
-    int dimension;
-    int length;
+    int nb_columns;
+    int nb_lignes;
     struct Ligne *first_ligne;
     struct Colonne *first_colonne; 
 }Matrice;
@@ -41,6 +39,9 @@ typedef struct Matrice {
 
 
 void create_control_matrice(struct Code *c, struct Matrice *m);
-void create_encoding_matrice(struct Code *c, struct Matrice *m) ;
+void create_encoding_matrice(struct Code *c, struct Matrice *m);
+
+int add_matrice(struct Matrice *res, struct Matrice *a, struct Matrice *b);
+int mult_matrice(struct Matrice *res, struct Matrice *a, struct Matrice *b);
 
 #endif

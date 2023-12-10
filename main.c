@@ -13,8 +13,8 @@ int main() {
     struct Code code = {.dimension=4, .longueur=4, .tableau={a, b, c, d}};
 
 
-    struct Matrice encoding_matrice = {.dimension=4, .length=4};
-    struct Matrice control_matrice = {.dimension=4, .length=4};
+    struct Matrice encoding_matrice = {.nb_columns=4, .nb_lignes=4};
+    struct Matrice control_matrice = {.nb_columns=4, .nb_lignes=4};
 
     create_encoding_matrice(&code, &encoding_matrice);
     create_control_matrice(&code, &control_matrice);
